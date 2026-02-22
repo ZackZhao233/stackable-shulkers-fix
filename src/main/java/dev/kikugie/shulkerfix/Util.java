@@ -3,12 +3,12 @@ package dev.kikugie.shulkerfix;
 import dev.kikugie.shulkerfix.carpet.ShulkerFixSettings;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.block.entity.HopperBlockEntity;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 
 public class Util {
 	public static boolean isShulkerBoxChecked(ItemStack stack) {
@@ -24,8 +24,12 @@ public class Util {
 	}
 
 	public static boolean hasCustomMaxStackSize(ItemStack stack) {
-		int defaultStackSize = stack.getDefaultComponents().getOrDefault(DataComponentTypes.MAX_STACK_SIZE, 1);
-		int currentStackSize = stack.getOrDefault(DataComponentTypes.MAX_STACK_SIZE, 1);
+		NbtCompound nbt = stack.getNbt();
+		if (nbt == null || !nbt.contains("max_stack_size", 99)) {
+			return false;
+		}
+		int defaultStackSize = stack.getMaxCount();
+		int currentStackSize = nbt.getInt("max_stack_size");
 		return defaultStackSize != currentStackSize;
 	}
 

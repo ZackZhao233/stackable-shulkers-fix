@@ -1,3 +1,11 @@
+**本项目是基于[此项目](https://github.com/WinExp/stackable-shulkers-fix)的Fork。主要修改是适配了1.20.4-Fabric。感谢原作者的工作。**
+> [!NOTE]  
+> 本项目的代码均由AI（[GLM-5](https://z.ai/blog/glm-5)）生成，其功能性和完整性无法保证，建议慎重使用。
+
+以下是原项目的README内容
+
+---
+
 # Stackable shulkers fix
 A simple addon to the [Carpet mod](https://www.curseforge.com/minecraft/mc-mods/carpet) that fixes the 1.20.5+ behaviour of stacked shulker boxes to be the same as in older versions, as well as some optional features.
 

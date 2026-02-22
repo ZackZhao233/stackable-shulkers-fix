@@ -1,40 +1,50 @@
-# gradle
-
+# Gradle
 .gradle/
 build/
 out/
 classes/
+!gradle-wrapper.jar
+!gradle-wrapper.properties
 
-# eclipse
-
-*.launch
-
-# idea
-
+# IDE - IntelliJ IDEA
 .idea/
 *.iml
 *.ipr
 *.iws
 
-# vscode
-
+# IDE - Eclipse
 .settings/
-.vscode/
-bin/
 .classpath
 .project
+*.launch
+bin/
 
-# macos
+# IDE - VS Code
+.vscode/
 
-*.DS_Store
+# macOS
+.DS_Store
+._*
 
-# fabric
-
+# Fabric
 run/
+libs/
 
-# java
-
+# Java
+*.class
+*.jar
+*.log
 hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+# Git
+*.orig
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+
+# Obsidian
+.obsidian/

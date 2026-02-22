@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.8-SNAPSHOT'
+	id 'fabric-loom' version '1.4-SNAPSHOT'
 }
 
 version = project.mod_version
@@ -10,20 +10,7 @@ base {
 }
 
 repositories {
-	def strictMaven = { String link, String... groups ->
-		exclusiveContent {
-			forRepository {
-				maven { url = link }
-			}
-			filter {
-				groups.each { includeGroup(it) }
-			}
-		}
-	}
-
-	strictMaven("https://api.modrinth.com/maven", "maven.modrinth")
-	strictMaven("https://www.cursemaven.com", "curse.maven")
-
+	maven { url = "https://maven.terraformersmc.com/releases" }
 }
 
 dependencies {
@@ -31,8 +18,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modLocalRuntime modCompileOnly("maven.modrinth:lithium:${project.lithium}")
-	modImplementation "curse.maven:carpet-349239:${project.carpet}"
+	modImplementation files("libs/fabric-carpet-1.20.3-1.4.128+v231205.jar")
 }
 
 processResources {
@@ -44,14 +30,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = 17
 }
 
 java {
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {

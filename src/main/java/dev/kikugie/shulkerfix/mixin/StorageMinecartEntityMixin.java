@@ -8,17 +8,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-/**
- * Provides two method qualifiers for 1.21.3 compatibility.
- */
 @Mixin(StorageMinecartEntity.class)
 public class StorageMinecartEntityMixin {
-	@SuppressWarnings({"UnresolvedMixinReference", "UnnecessaryQualifiedMemberReference"})
 	@ModifyArg(
-		method = {
-			"Lnet/minecraft/class_1693;method_7525()V", // <1.21.2
-			"Lnet/minecraft/entity/vehicle/StorageMinecartEntity;applySlowdown(Lnet/minecraft/util/math/Vec3d;)Lnet/minecraft/util/math/Vec3d;"
-		},
+		method = "applySlowdown",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/screen/ScreenHandler;calculateComparatorOutput(Lnet/minecraft/inventory/Inventory;)I"
