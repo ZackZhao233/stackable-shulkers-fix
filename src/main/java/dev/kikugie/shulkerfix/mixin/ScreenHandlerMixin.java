@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.At;
 public class ScreenHandlerMixin {
 	@WrapOperation(
 		method = "calculateComparatorOutput(Lnet/minecraft/inventory/Inventory;)I",
-		at = @At(value = "INVOKE", target = "Lnet/minecraft/inventory/Inventory;getMaxCount(Lnet/minecraft/item/ItemStack;)I")
+		at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getMaxCount()I")
 	)
-	private static int fixOverstackedSignalStrength(Inventory instance, ItemStack stack, Operation<Integer> original) {
-		return !Util.isShulkerBoxLimited(stack) || Util.isWrapped(instance) ? original.call(instance, stack) : 1;
+	private static int fixOverstackedSignalStrength(ItemStack instance, Operation<Integer> original) {
+		return Util.isShulkerBoxLimited(instance) ? 1 : original.call(instance);
 	}
 }
