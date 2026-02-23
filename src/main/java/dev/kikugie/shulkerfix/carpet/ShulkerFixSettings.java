@@ -2,6 +2,7 @@ package dev.kikugie.shulkerfix.carpet;
 
 import carpet.settings.Rule;
 
+@SuppressWarnings("removal")
 public class ShulkerFixSettings {
 	private static final String SHULKERFIX = "shulkerfix";
 	private static final String INTRUSIVE = "intrusive";
